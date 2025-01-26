@@ -1,0 +1,30 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('tb_jurusan', function (Blueprint $table) {
+            $table->string('jurusan_thumbnail')->nullable(); // Thumbnail (opsional)
+        });
+
+        Schema::table('tb_jurusan', function (Blueprint $table) {
+            $table->string('jurusan_logo')->after('jurusan_thumbnail');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        //
+    }
+};

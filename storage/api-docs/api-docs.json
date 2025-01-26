@@ -1,0 +1,3225 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "School Backend API Documentation",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/user/slider/keunggulan": {
+            "get": {
+                "tags": ["Slider Keunggulan"],
+                "summary": "Get Slider Keunggulan",
+                "description": "Retrieve Slider Keunggulan",
+                "operationId": "getSliderKeunggulan",
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SkResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/articles": {
+            "get": {
+                "tags": ["Articles"],
+                "summary": "Get all articles",
+                "description": "Retrieve all articles with type 1. Supports search by 'nama' and 'category' and filtering by date range using 'created_at'.",
+                "operationId": "getAllArticles",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Search keyword for article names",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "search_category",
+                        "in": "query",
+                        "description": "Search keyword for category article names",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "description": "Start date for filtering articles (format: YYYY-MM-DD)",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "description": "End date for filtering articles (format: YYYY-MM-DD)",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/ArticleResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/articles/{id}": {
+            "get": {
+                "tags": ["Articles"],
+                "summary": "Get specific article",
+                "description": "Retrieve a specific article by its ID",
+                "operationId": "getArticleById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/ArticleResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/article-categories": {
+            "get": {
+                "tags": ["Articles"],
+                "summary": "Get all article categories",
+                "description": "Retrieve all categories for articles",
+                "operationId": "getArticle-categories",
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/CategoryResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/profile/ekstras": {
+            "get": {
+                "tags": ["Ekstra"],
+                "summary": "Get all Ekstra",
+                "description": "Retrieve all Ekstra",
+                "operationId": "getAllEkstra",
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Ekstra"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/profile/ekstras/{id_extra}": {
+            "get": {
+                "tags": ["Ekstra"],
+                "summary": "Get specific Ekstra",
+                "description": "Retrieve a specific Ekstra by ID",
+                "operationId": "getEkstraById",
+                "parameters": [
+                    {
+                        "name": "id_extra",
+                        "in": "path",
+                        "description": "ID of the Ekstra",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/Ekstra"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/events": {
+            "get": {
+                "tags": ["Events"],
+                "summary": "Get all events",
+                "description": "Retrieve all events with type 4",
+                "operationId": "getAllEvents",
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/EventResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/events/{id}": {
+            "get": {
+                "tags": ["Events"],
+                "summary": "Get specific event",
+                "description": "Retrieve a specific event by its ID",
+                "operationId": "getEventById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/EventResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/event-categories": {
+            "get": {
+                "tags": ["Events"],
+                "summary": "Get all event categories",
+                "description": "Retrieve all categories for events",
+                "operationId": "getEventCategories",
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/CategoryResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/profile/facilities": {
+            "get": {
+                "tags": ["Facilities"],
+                "summary": "Get all facilities",
+                "description": "Retrieve all facilities",
+                "operationId": "getAllFacilities",
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/FasilitasResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/profile/facilities/{id}": {
+            "get": {
+                "tags": ["Facilities"],
+                "summary": "Get specific facility",
+                "description": "Retrieve a specific facility by its ID",
+                "operationId": "getFacilityById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/FasilitasResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/galleries": {
+            "get": {
+                "tags": ["Gallery"],
+                "summary": "Get all Gallery",
+                "description": "Retrieve all Gallery",
+                "operationId": "getAllGaleri",
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Gallery"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/galleries/{id}": {
+            "get": {
+                "tags": ["Gallery"],
+                "summary": "Get galleries by ID",
+                "description": "Retrieve a single galleries entry by ID",
+                "operationId": "getGaleriById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Gallery"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/gallery-categories": {
+            "get": {
+                "tags": ["Gallery"],
+                "summary": "Get gallery categories",
+                "description": "Retrieve categories of gallery",
+                "operationId": "getGaleriCategories",
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/CategoryGalleryResource"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/search": {
+            "get": {
+                "tags": ["Global Search"],
+                "summary": "Search globally across multiple tables",
+                "description": "Perform a search for all section",
+                "operationId": "globalSearch",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "Search keyword",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/profile/majors": {
+            "get": {
+                "tags": ["Major"],
+                "summary": "Get all Major",
+                "description": "Retrieve all Major",
+                "operationId": "getAllMajor",
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Jurusan"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/profile/majors/{id}": {
+            "get": {
+                "tags": ["Major"],
+                "summary": "Get specific Major",
+                "description": "Retrieve a specific Major by ID",
+                "operationId": "getMajorById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Major",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/Jurusan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/kemitraans": {
+            "get": {
+                "tags": ["Kemitraan"],
+                "summary": "Get all Kemitraan",
+                "description": "Retrieve all Kemitraan data. Supports search by 'kemitraan_name'.",
+                "operationId": "getAllKemitraan",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Search keyword for Kemitraan names",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/KemitraanResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/kemitraans/{id_kemitraan}": {
+            "get": {
+                "tags": ["Kemitraan"],
+                "summary": "Get specific Kemitraan",
+                "description": "Retrieve a specific Kemitraan by ID",
+                "operationId": "getKemitraanById",
+                "parameters": [
+                    {
+                        "name": "id_kemitraan",
+                        "in": "path",
+                        "description": "ID of the Kemitraan",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/KemitraanResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/logo/kemitraan": {
+            "get": {
+                "tags": ["Kemitraan"],
+                "summary": "Retrieve all logo kemitraan data",
+                "description": "Get all Logo Kemitraan",
+                "operationId": "getLogok",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "success"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data logok berhasil diambil"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/LogoKResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/api/user/lokers": {
+            "get": {
+                "tags": ["Loker"],
+                "summary": "Get all Loker",
+                "description": "Retrieve all Loker data. Supports search by 'position_name' and filter by 'loker_for'.",
+                "operationId": "getAllLoker",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Search keyword for Position names",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "search_requirement",
+                        "in": "query",
+                        "description": "Search keyword for Loker Requirement (loker_for)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/LokerResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/lokers/{id}": {
+            "get": {
+                "tags": ["Loker"],
+                "summary": "Get Loker by ID",
+                "description": "Retrieve a single Loker entry by ID",
+                "operationId": "getLokerById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LokerResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/news": {
+            "get": {
+                "tags": ["News"],
+                "summary": "Get all news data",
+                "description": "Retrieve all news data. Supports search by 'nama' and filtering by date range using 'created_at'.",
+                "operationId": "getAllNews",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Search keyword for news names",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "search_category",
+                        "in": "query",
+                        "description": "Search keyword for news category names",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "description": "Start date for filtering news (format: YYYY-MM-DD)",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "description": "End date for filtering news (format: YYYY-MM-DD)",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/NewsResource"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/news/{id}": {
+            "get": {
+                "tags": ["News"],
+                "summary": "Get news by ID",
+                "description": "Retrieve a single news entry by ID",
+                "operationId": "getNewsById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NewsResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/news-categories": {
+            "get": {
+                "tags": ["News"],
+                "summary": "Get news categories",
+                "description": "Retrieve categories of news",
+                "operationId": "getNewsCategories",
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/CategoryResource"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/PerangkatAjar": {
+            "get": {
+                "tags": ["Perangkat Ajar"],
+                "summary": "Get all Perangkat Ajar",
+                "description": "Retrieve all Perangkat Ajar with type 1. Supports search by 'nama' and 'kelas'.",
+                "operationId": "getAllPerangkatAjar",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Search keyword for Materi Bahan Ajar",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "kelas",
+                        "in": "query",
+                        "description": "Search keyword for class Materi Bahan Ajar",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/PerangkatAjarResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/profile/students": {
+            "get": {
+                "tags": ["PD"],
+                "summary": "Get all peserta didik",
+                "description": "Retrieve all peserta didik. Supports search by 'nama' and 'kelas'.",
+                "operationId": "getAllPesertaDidik",
+                "parameters": [
+                    {
+                        "name": "search_nama",
+                        "in": "query",
+                        "description": "Search by nama",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "search_kelas",
+                        "in": "query",
+                        "description": "Search by kelas",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/PDResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/profile/students/{id}": {
+            "get": {
+                "tags": ["PD"],
+                "summary": "Get specific peserta didik",
+                "description": "Retrieve a specific peserta didik by its ID",
+                "operationId": "getPesertaDidikById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/PDResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/profile/teachers": {
+            "get": {
+                "tags": ["PTK"],
+                "summary": "Get all PTK",
+                "description": "Retrieve all PTK. Supports search by 'nama', 'nip', and 'nuptk'.",
+                "operationId": "getAllPTK",
+                "parameters": [
+                    {
+                        "name": "search_nama",
+                        "in": "query",
+                        "description": "Search by nama",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "search_nip",
+                        "in": "query",
+                        "description": "Search by NIP",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "search_nuptk",
+                        "in": "query",
+                        "description": "Search by NUPTK",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/PTKResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/profile/teachers/{id}": {
+            "get": {
+                "tags": ["PTK"],
+                "summary": "Get specific PTK",
+                "description": "Retrieve a specific PTK by its ID",
+                "operationId": "getPTKById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/PTKResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/announcements": {
+            "get": {
+                "tags": ["Announcement"],
+                "summary": "Get all announcements",
+                "description": "Retrieve all announcements with type 2",
+                "operationId": "getAllAnnouncements",
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/AnnouncementResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/announcements/{id}": {
+            "get": {
+                "tags": ["Announcement"],
+                "summary": "Get specific announcement",
+                "description": "Retrieve a specific announcement by its ID",
+                "operationId": "getAnnouncementById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/AnnouncementResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/announcement-categories": {
+            "get": {
+                "tags": ["Announcement"],
+                "summary": "Get all announcement categories",
+                "description": "Retrieve all categories for announcements",
+                "operationId": "getAnnouncementCategories",
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/CategoryResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/position": {
+            "get": {
+                "tags": ["Position"],
+                "summary": "Get all Position",
+                "description": "Retrieve all Position",
+                "operationId": "getAllPosition",
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Position"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/position/{id}": {
+            "get": {
+                "tags": ["Position"],
+                "summary": "Get Position by ID",
+                "description": "Retrieve a single Position entry by ID",
+                "operationId": "getPositionById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Position"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/footer": {
+            "get": {
+                "tags": ["Footer navigation"],
+                "summary": "Get Footer Navigation",
+                "description": "Retrieve Footer Navigation",
+                "operationId": "getFooterNavigation",
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "List": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "1": {
+                                                        "type": "string",
+                                                        "example": "Unit Produksi Sekolah"
+                                                    },
+                                                    "data": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "$ref": "#/components/schemas/FooterSchemas"
+                                                        }
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/profile/komite-sekolah": {
+            "get": {
+                "tags": ["Sekolah"],
+                "summary": "Get Komite Sekolah",
+                "description": "Retrieve Komite Sekolah",
+                "operationId": "getKomiteSekolah",
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/ProfileData"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/profile/program-kerja": {
+            "get": {
+                "tags": ["Sekolah"],
+                "summary": "Get Program Kerja Sekolah",
+                "description": "Retrieve Program Kerja Sekolah",
+                "operationId": "getProgramKerjaSekolah",
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/ProfileData"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/profile/struktur-organisasi": {
+            "get": {
+                "tags": ["Sekolah"],
+                "summary": "Get Struktur Organisasi Sekolah",
+                "description": "Retrieve Struktur Organisasi  Sekolah",
+                "operationId": "getStrukturOrganisasiSekolah",
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/ProfileData"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/profile/visi-misi": {
+            "get": {
+                "tags": ["Sekolah"],
+                "summary": "Get Visi Misi Sekolah",
+                "description": "Retrieve Visi Misi  Sekolah",
+                "operationId": "getVisiMisiSekolah",
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/ProfileData"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/profile/sambutan/Kepala-sekolah": {
+            "get": {
+                "tags": ["Sekolah"],
+                "summary": "Get Program Sambutan Kepala Sekolah",
+                "description": "Retrieve Sambutan Kepala Sekolah",
+                "operationId": "getSambutanKepalaSekolahh",
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/ProfileData"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/link/alerts": {
+            "get": {
+                "tags": ["Links"],
+                "summary": "Get alert",
+                "description": "Retrieve alert",
+                "operationId": "getAlert",
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/AlertResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/link/videos": {
+            "get": {
+                "tags": ["Videos"],
+                "summary": "Get video",
+                "description": "Retrieve video",
+                "operationId": "getVideo",
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/AlertResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/link/videos/kemitraan": {
+            "get": {
+                "tags": ["Videos"],
+                "summary": "Get video kemitraan",
+                "description": "Retrieve video kwemitraan",
+                "operationId": "getVideoKemtiraan",
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data ditemukan"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/AlertResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AnnouncementResource": {
+                "properties": {
+                    "id_pemberitahuan": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "nama": {
+                        "type": "string",
+                        "example": "Pengumuman Penting"
+                    },
+                    "thumbnail": {
+                        "type": "string",
+                        "example": "img/announcement/gambar.jpg"
+                    },
+                    "pdf": {
+                        "type": "string",
+                        "example": "pdf/announcement/example.pdf"
+                    },
+                    "icon_type": {
+                        "type": "string",
+                        "example": "Announcement"
+                    },
+                    "target": {
+                        "type": "string",
+                        "example": "Semua"
+                    },
+                    "published_by": {
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "example": "Humas"
+                            },
+                            "img": {
+                                "type": "string",
+                                "example": "img/no_image.png"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "jurnal_by": {
+                        "type": "string",
+                        "example": "Jurnal A"
+                    },
+                    "date": {
+                        "type": "string",
+                        "example": "2023-01-01"
+                    },
+                    "time": {
+                        "type": "string",
+                        "example": "12:00"
+                    },
+                    "text": {
+                        "type": "string",
+                        "example": "Ini adalah teks pengumuman."
+                    },
+                    "category": {
+                        "properties": {
+                            "id": {
+                                "type": "integer",
+                                "example": 1
+                            },
+                            "nama": {
+                                "type": "string",
+                                "example": "Kategori A"
+                            },
+                            "color": {
+                                "type": "string",
+                                "example": "#FF0000"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "viewer": {
+                        "type": "integer",
+                        "example": "100"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "example": "2023-01-01T12:00:00Z"
+                    }
+                },
+                "type": "object"
+            },
+            "ArticleResource": {
+                "properties": {
+                    "id_pemberitahuan": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "nama": {
+                        "type": "string",
+                        "example": "Artikel Penting"
+                    },
+                    "thumbnail": {
+                        "type": "string",
+                        "example": "img/artikel/gambar.jpg"
+                    },
+                    "icon_type": {
+                        "type": "string",
+                        "example": "Articles"
+                    },
+                    "target": {
+                        "type": "string",
+                        "example": "Semua"
+                    },
+                    "date": {
+                        "type": "string",
+                        "example": "2023-01-01"
+                    },
+                    "time": {
+                        "type": "string",
+                        "example": "12:00"
+                    },
+                    "text": {
+                        "type": "string",
+                        "example": "Ini adalah teks artikel."
+                    },
+                    "level": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "published_by": {
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "example": "Humas"
+                            },
+                            "img": {
+                                "type": "string",
+                                "example": "img/no_image.png"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "jurnal_by": {
+                        "type": "string",
+                        "example": "Jurnal A"
+                    },
+                    "viewer": {
+                        "type": "integer",
+                        "example": 100
+                    },
+                    "category": {
+                        "properties": {
+                            "id": {
+                                "type": "integer",
+                                "example": 1
+                            },
+                            "nama": {
+                                "type": "string",
+                                "example": "Kategori A"
+                            },
+                            "color": {
+                                "type": "string",
+                                "example": "#FF0000"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "example": "2023-01-01T12:00:00Z"
+                    }
+                },
+                "type": "object"
+            },
+            "CategoryGalleryResource": {
+                "title": "Category Gallery Resource",
+                "properties": {
+                    "id_category": {
+                        "type": "integer"
+                    },
+                    "category_name": {
+                        "type": "string"
+                    },
+                    "icon_type": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "CategoryResource": {
+                "title": "Category Resource",
+                "properties": {
+                    "id_pemberitahuan_category": {
+                        "type": "integer"
+                    },
+                    "nama": {
+                        "type": "string"
+                    },
+                    "icon_type": {
+                        "type": "string"
+                    },
+                    "color": {
+                        "type": "string"
+                    },
+                    "tipe": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "nama": {
+                                "type": "string"
+                            },
+                            "color": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "Ekstra": {
+                "properties": {
+                    "id_extra": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "extra_name": {
+                        "type": "string",
+                        "example": "Basketball"
+                    },
+                    "icon_type": {
+                        "type": "string",
+                        "example": "Ekstra"
+                    },
+                    "extra_text": {
+                        "type": "string",
+                        "example": "Basketball club for all grades."
+                    },
+                    "extra_type": {
+                        "type": "string",
+                        "example": "Sport"
+                    },
+                    "extra_logo": {
+                        "type": "string",
+                        "example": "logo.png"
+                    },
+                    "extra_image": {
+                        "type": "string",
+                        "example": "image.png"
+                    },
+                    "instagram": {
+                        "type": "string",
+                        "example": "https://instagram.com/basketball"
+                    },
+                    "telegram": {
+                        "type": "string",
+                        "example": "https://telegram.me/basketball"
+                    },
+                    "extra_hari": {
+                        "type": "string",
+                        "example": "Monday and Thursday"
+                    }
+                },
+                "type": "object"
+            },
+            "EventResource": {
+                "properties": {
+                    "id_pemberitahuan": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "nama": {
+                        "type": "string",
+                        "example": "Event Penting"
+                    },
+                    "target": {
+                        "type": "string",
+                        "example": "Semua"
+                    },
+                    "thumbnail": {
+                        "type": "string",
+                        "example": "img/event/gambar.jpg"
+                    },
+                    "pdf": {
+                        "type": "string",
+                        "example": "pdf/event/example.pdf"
+                    },
+                    "icon_type": {
+                        "type": "string",
+                        "example": "Event"
+                    },
+                    "date": {
+                        "type": "string",
+                        "example": "2023-01-01"
+                    },
+                    "published_by": {
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "example": "Humas"
+                            },
+                            "img": {
+                                "type": "string",
+                                "example": "img/no_image.png"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "jurnal_by": {
+                        "type": "string",
+                        "example": "Jurnal A"
+                    },
+                    "time": {
+                        "type": "string",
+                        "example": "12:00"
+                    },
+                    "text": {
+                        "type": "string",
+                        "example": "Ini adalah teks event."
+                    },
+                    "category": {
+                        "properties": {
+                            "id": {
+                                "type": "integer",
+                                "example": 1
+                            },
+                            "nama": {
+                                "type": "string",
+                                "example": "Kategori A"
+                            },
+                            "color": {
+                                "type": "string",
+                                "example": "#FF0000"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "viewer": {
+                        "type": "integer",
+                        "example": "100"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "example": "2023-01-01T12:00:00Z"
+                    }
+                },
+                "type": "object"
+            },
+            "FasilitasResource": {
+                "properties": {
+                    "id_facility": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "facility_name": {
+                        "type": "string",
+                        "example": "Lab Komputer"
+                    },
+                    "facility_image": {
+                        "type": "string",
+                        "example": "img/fasilitas/lab_komputer.png"
+                    },
+                    "icon_type": {
+                        "type": "string",
+                        "example": "Fasilitas"
+                    },
+                    "prodi": {
+                        "properties": {
+                            "id": {
+                                "type": "integer",
+                                "example": 1
+                            },
+                            "nama_prodi": {
+                                "type": "string",
+                                "example": "Teknik Informatika"
+                            },
+                            "prodi_short": {
+                                "type": "string",
+                                "example": "TI"
+                            },
+                            "prodi_color": {
+                                "type": "string",
+                                "example": "#FF0000"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "facility_text": {
+                        "type": "string",
+                        "example": "Laboratorium komputer dengan fasilitas lengkap."
+                    }
+                },
+                "type": "object"
+            },
+            "FooterSchemas": {
+                "title": "FooterSchemas",
+                "description": "FooterSchemas",
+                "properties": {
+                    "id": {
+                        "description": "ID",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "label": {
+                        "description": "Label",
+                        "type": "string",
+                        "example": "Label"
+                    },
+                    "icon_type": {
+                        "description": "Icon Type",
+                        "type": "string",
+                        "example": "Footer"
+                    },
+                    "url": {
+                        "description": "URL",
+                        "type": "string",
+                        "example": "URL"
+                    },
+                    "type": {
+                        "description": "Type",
+                        "type": "integer",
+                        "example": "1"
+                    }
+                },
+                "type": "object"
+            },
+            "Gallery": {
+                "properties": {
+                    "id_gallery": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "gallery_title": {
+                        "type": "string",
+                        "example": "Kegiatan MPLS"
+                    },
+                    "icon_type": {
+                        "type": "string",
+                        "example": "Gallery"
+                    },
+                    "gallery_text": {
+                        "type": "string",
+                        "example": "MPLS dilaksanakan pada tanggal..."
+                    },
+                    "gallery_location": {
+                        "type": "string",
+                        "example": "SMKN 1 Pangkalan Kerinci"
+                    },
+                    "id_category": {
+                        "type": "string",
+                        "example": "MPLS/Kelas/dll"
+                    },
+                    "gallery_file": {
+                        "type": "string",
+                        "example": "img/gallery/image.png"
+                    },
+                    "file_type": {
+                        "type": "string",
+                        "example": "jpg/png/dll"
+                    }
+                },
+                "type": "object"
+            },
+            "Jurusan": {
+                "properties": {
+                    "id_jurusan": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "jurusan_nama": {
+                        "type": "string",
+                        "example": "Teknik Informatika"
+                    },
+                    "icon_type": {
+                        "type": "string",
+                        "example": "Jurusan"
+                    },
+                    "jurusan_short": {
+                        "type": "string",
+                        "example": "TI"
+                    },
+                    "jurusan_thumbnail": {
+                        "type": "string",
+                        "example": "img/jurusan/gambar.jpg"
+                    },
+                    "jurusan_logo": {
+                        "type": "string",
+                        "example": "img/jurusan/logo/gambar.jpg"
+                    },
+                    "prodi": {
+                        "properties": {
+                            "id": {
+                                "type": "integer",
+                                "example": 1
+                            },
+                            "nama_prodi": {
+                                "type": "string",
+                                "example": "Teknik Informatika"
+                            },
+                            "prodi_short": {
+                                "type": "string",
+                                "example": "TI"
+                            },
+                            "prodi_color": {
+                                "type": "string",
+                                "example": "#FF0000"
+                            }
+                        },
+                        "type": "object",
+                        "nullable": true
+                    },
+                    "jurusan_text": {
+                        "type": "string",
+                        "example": "Deskripsi jurusan Teknik Informatika"
+                    }
+                },
+                "type": "object"
+            },
+            "KemitraanResource": {
+                "properties": {
+                    "id_kemitraan": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "kemitraan_name": {
+                        "type": "string",
+                        "example": "Inafood/Honda/Mayora"
+                    },
+                    "kemitraan_logo": {
+                        "type": "string",
+                        "example": "logo.png"
+                    },
+                    "icon_type": {
+                        "type": "string",
+                        "example": "Kemitraan"
+                    },
+                    "kemitraan_thumbnail": {
+                        "type": "string",
+                        "example": "image.png"
+                    },
+                    "kemitraan_description": {
+                        "type": "string",
+                        "example": "This industry is..."
+                    },
+                    "kemitraan_city": {
+                        "type": "string",
+                        "example": "Kabupaten/Kota"
+                    },
+                    "kemitraan_location_detail": {
+                        "type": "string",
+                        "example": "Provinsi, Kabupaten/Kota, Kecamatan"
+                    }
+                },
+                "type": "object"
+            },
+            "LogoKResource": {
+                "properties": {
+                    "id_logo_mitra": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "nama_mitra": {
+                        "type": "string",
+                        "example": "Inafood/Honda/Mayora"
+                    },
+                    "logo_mitra": {
+                        "type": "string",
+                        "example": "img/mitra/logo.png"
+                    },
+                    "width": {
+                        "type": "integer",
+                        "example": 128
+                    },
+                    "height": {
+                        "type": "integer",
+                        "example": 128
+                    }
+                },
+                "type": "object"
+            },
+            "LokerResource": {
+                "properties": {
+                    "id_loker": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "loker_thumbnail": {
+                        "type": "string",
+                        "example": "img/loker/image.png"
+                    },
+                    "pdf": {
+                        "type": "string",
+                        "example": "pdf/loker/example.pdf"
+                    },
+                    "loker_description": {
+                        "type": "string",
+                        "example": "Kasir/Sales/Marketing"
+                    },
+                    "loker_for": {
+                        "type": "string",
+                        "example": "Siswa Alumni"
+                    },
+                    "position": {
+                        "properties": {
+                            "id_position": {
+                                "type": "integer",
+                                "example": 1
+                            },
+                            "position_name": {
+                                "type": "string",
+                                "example": "Operator"
+                            },
+                            "icon_type": {
+                                "type": "string",
+                                "example": "Posisi"
+                            },
+                            "position_type": {
+                                "type": "string",
+                                "example": "Full-time"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "kemitraan": {
+                        "properties": {
+                            "id_kemitraan": {
+                                "type": "integer",
+                                "example": 1
+                            },
+                            "kemitraan_name": {
+                                "type": "string",
+                                "example": "Inafood"
+                            },
+                            "icon_type": {
+                                "type": "string",
+                                "example": "Loker"
+                            },
+                            "kemitraan_description": {
+                                "type": "string",
+                                "example": "A partnership with Inafood"
+                            },
+                            "kemitraan_logo": {
+                                "type": "string",
+                                "example": "img/kemitraan/logo.png"
+                            },
+                            "kemitraan_thumbnail": {
+                                "type": "string",
+                                "example": "img/kemitraan/thumbnail.png"
+                            },
+                            "kemitraan_city": {
+                                "type": "string",
+                                "example": "Jakarta"
+                            },
+                            "kemitraan_location_detail": {
+                                "type": "string",
+                                "example": "Jl. Jendral Sudirman No. 1, Jakarta"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "loker_available": {
+                        "type": "string",
+                        "example": "Tersedia"
+                    }
+                },
+                "type": "object"
+            },
+            "NewsResource": {
+                "title": "News Resource",
+                "properties": {
+                    "id_pemberitahuan": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "nama": {
+                        "type": "string",
+                        "example": "Berita Terbaru"
+                    },
+                    "thumbnail": {
+                        "type": "string",
+                        "example": "img/berita/thumbnail.jpg"
+                    },
+                    "text": {
+                        "type": "string",
+                        "example": "Konten berita..."
+                    },
+                    "level": {
+                        "type": "string",
+                        "example": "1"
+                    },
+                    "location": {
+                        "type": "string",
+                        "example": "Jakarta"
+                    },
+                    "category": {
+                        "properties": {
+                            "id": {
+                                "type": "integer",
+                                "example": 1
+                            },
+                            "nama": {
+                                "type": "string",
+                                "example": "Kategori A"
+                            },
+                            "color": {
+                                "type": "string",
+                                "example": "#FF0000"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "viewer": {
+                        "type": "integer",
+                        "example": 100
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-09-19T12:00:00Z"
+                    },
+                    "published_by": {
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "example": "Humas"
+                            },
+                            "img": {
+                                "type": "string",
+                                "example": "img/no_image.png"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "jurnal_by": {
+                        "type": "string",
+                        "example": "Jurnal B"
+                    }
+                },
+                "type": "object"
+            },
+            "PDResource": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "nisn": {
+                        "type": "string",
+                        "example": "1234567890"
+                    },
+                    "nis": {
+                        "type": "string",
+                        "example": "12345"
+                    },
+                    "nama": {
+                        "type": "string",
+                        "example": "John Doe"
+                    },
+                    "kelas": {
+                        "type": "string",
+                        "example": "10A"
+                    },
+                    "tempat_lahir": {
+                        "type": "string",
+                        "example": "Jakarta"
+                    },
+                    "tanggal_lahir": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2000-01-01"
+                    },
+                    "agama": {
+                        "type": "string",
+                        "example": "Islam"
+                    },
+                    "gender": {
+                        "type": "string",
+                        "example": "Laki-laki"
+                    },
+                    "telp": {
+                        "type": "string",
+                        "example": "081234567890"
+                    },
+                    "alamat": {
+                        "type": "string",
+                        "example": "Jl. Kebon Jeruk No. 1"
+                    }
+                },
+                "type": "object"
+            },
+            "PTKResource": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "nama": {
+                        "type": "string",
+                        "example": "Jane Doe"
+                    },
+                    "mata_pelajaran": {
+                        "type": "string",
+                        "example": "Bahasa Indonesia"
+                    },
+                    "icon_type": {
+                        "type": "string",
+                        "example": "PTK"
+                    },
+                    "nip": {
+                        "type": "string",
+                        "example": "123456789"
+                    },
+                    "nuptk": {
+                        "type": "string",
+                        "example": "987654321"
+                    },
+                    "tempat_lahir": {
+                        "type": "string",
+                        "example": "Bandung"
+                    },
+                    "tanggal_lahir": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "1980-05-15"
+                    },
+                    "jenis_kelamin": {
+                        "type": "string",
+                        "example": "Perempuan"
+                    },
+                    "alamat": {
+                        "type": "string",
+                        "example": "Jl. Merdeka No. 10"
+                    },
+                    "foto": {
+                        "type": "string",
+                        "example": "img/guru/gambar.jpg"
+                    }
+                },
+                "type": "object"
+            },
+            "Position": {
+                "properties": {
+                    "id_position": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "position_name": {
+                        "type": "string",
+                        "example": "Operator/Engineer/Finance"
+                    },
+                    "icon_type": {
+                        "type": "string",
+                        "example": "Posisi"
+                    },
+                    "position_type": {
+                        "type": "string",
+                        "example": "Fulltime/Parttime/Internship"
+                    },
+                    "kemitraan_id": {
+                        "type": "string",
+                        "example": "Inafood/Honda/Mayora"
+                    }
+                },
+                "type": "object"
+            },
+            "Prodi": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "nama_prodi": {
+                        "type": "string",
+                        "example": "Teknik Informatika"
+                    },
+                    "icon_type": {
+                        "type": "string",
+                        "example": "Prodi"
+                    },
+                    "prodi_short": {
+                        "type": "string",
+                        "example": "TI"
+                    },
+                    "prodi_color": {
+                        "type": "string",
+                        "example": "#FF0000"
+                    }
+                },
+                "type": "object"
+            },
+            "SkResource": {
+                "properties": {
+                    "id_sk": {
+                        "description": "ID of the SkResource",
+                        "type": "integer"
+                    },
+                    "title": {
+                        "description": "Title of the SkResource",
+                        "type": "string"
+                    },
+                    "icon_type": {
+                        "description": "Slider",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Description of the SkResource",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "AlertResource": {
+                "properties": {
+                    "id_alert": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "alert_title": {
+                        "type": "string",
+                        "example": "Don't miss"
+                    },
+                    "icon_type": {
+                        "type": "string",
+                        "example": "Alert"
+                    },
+                    "alert_url": {
+                        "type": "string",
+                        "example": "https://..."
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "example": "2023-01-01T12:00:00Z"
+                    }
+                },
+                "type": "object"
+            },
+            "VideoResource": {
+                "properties": {
+                    "id_video": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "video_title": {
+                        "type": "string",
+                        "example": "Opening MPLS"
+                    },
+                    "icon_type": {
+                        "type": "string",
+                        "example": "Video"
+                    },
+                    "video_description": {
+                        "type": "string",
+                        "example": "Opening MPLS"
+                    },
+                    "video_url": {
+                        "type": "string",
+                        "example": "https://..."
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "example": "2023-01-01T12:00:00Z"
+                    }
+                },
+                "type": "object"
+            },
+            "PerangkatAjarResource": {
+                "properties": {
+                    "id_pa": {
+                        "description": "ID of the Perangkat Ajar",
+                        "type": "integer"
+                    },
+                    "title": {
+                        "description": "Title of the Perangkat Ajar",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Description of the Perangkat Ajar",
+                        "type": "string"
+                    },
+                    "type": {
+                        "description": "Type of the Perangkat Ajar",
+                        "type": "string"
+                    },
+                    "url": {
+                        "description": "URL of the Perangkat Ajar",
+                        "type": "string",
+                        "format": "url"
+                    },
+                    "size": {
+                        "description": "Size of the Perangkat Ajar",
+                        "type": "string",
+                        "format": "size"
+                    }
+                },
+                "type": "object"
+            },
+            "ProfileData": {
+                "properties": {
+                    "id_profile": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "profile_name": {
+                        "type": "string",
+                        "example": "Komite Sekolah"
+                    },
+                    "name_data": {
+                        "type": "string",
+                        "example": "name of file data if type = data"
+                    },
+                    "type_data": {
+                        "type": "string",
+                        "example": "text,'url','file'"
+                    },
+                    "profile_data": {
+                        "type": "string",
+                        "example": "https://..."
+                    },
+                    "icon_type": {
+                        "type": "string",
+                        "example": "Profile"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Slider Keunggulan",
+            "description": "Slider Keunggulan"
+        },
+        {
+            "name": "Articles",
+            "description": "Articles"
+        },
+        {
+            "name": "Ekstra",
+            "description": "Ekstra"
+        },
+        {
+            "name": "Events",
+            "description": "Events"
+        },
+        {
+            "name": "Facilities",
+            "description": "Facilities"
+        },
+        {
+            "name": "Gallery",
+            "description": "Gallery"
+        },
+        {
+            "name": "Global Search",
+            "description": "Global Search"
+        },
+        {
+            "name": "Major",
+            "description": "Major"
+        },
+        {
+            "name": "Kemitraan",
+            "description": "Kemitraan"
+        },
+        {
+            "name": "Loker",
+            "description": "Loker"
+        },
+        {
+            "name": "News",
+            "description": "News"
+        },
+        {
+            "name": "Perangkat Ajar",
+            "description": "Perangkat Ajar"
+        },
+        {
+            "name": "PD",
+            "description": "PD"
+        },
+        {
+            "name": "PTK",
+            "description": "PTK"
+        },
+        {
+            "name": "Announcement",
+            "description": "Announcement"
+        },
+        {
+            "name": "Position",
+            "description": "Position"
+        },
+        {
+            "name": "Footer navigation",
+            "description": "Footer navigation"
+        },
+        {
+            "name": "Sekolah",
+            "description": "Sekolah"
+        },
+        {
+            "name": "Links",
+            "description": "Links"
+        },
+        {
+            "name": "Videos",
+            "description": "Videos"
+        }
+    ]
+}
