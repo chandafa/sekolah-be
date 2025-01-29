@@ -1,54 +1,63 @@
 <aside class="aside-admin px-2" id="aside-admin">
     <div class="aside-logo bg-white pt-2 px-1 pb-0 rad text-center shadow-warning mt-3">
         <div class="d-inline-block">
-            <img src="{{ asset('img/fav.png') }}" class="img-logo-aside d-inline-block mb-2" width="40px" height="40px" alt="">
+            <img src="{{ asset('img/fav.png') }}" class="img-logo-aside d-inline-block mb-2" width="40px" height="40px"
+                alt="">
             <div class="label-menu d-none">
-                <h6 class="mb-0">SMKNUSA</h6>
+                <h6 class="mb-0">SMKN1PANGKER</h6>
                 <p class="mb-0" style="font-size: .85rem !important;">Admin Panel</p>
             </div>
         </div>
     </div>
     <div class="menu-aside px-2 w-100 text-center mt-5">
-        <div class="my-2 {{ ($menu_active ==="dashboard") ? 'menu-active' : '' }} my-2 px-3" onclick="window.location.href='{{ route('dashboard', ['token' => $token]) }}';">
+        <div class="my-2 {{ $menu_active === 'dashboard' ? 'menu-active' : '' }} my-2 px-3"
+            onclick="window.location.href='{{ route('dashboard', ['token' => $token]) }}';">
             <i class="fas fa-tachometer-alt"></i>
             <h6 class="label-menu d-none">Dashboard</h6>
         </div>
-        @if(session()->get('user')->role == 1)
-        <div class="my-2 {{ ($menu_active ==="user") ? 'menu-active' : '' }} my-2 px-3" onclick="window.location.href='{{ route('user.index', ['token' => $token]) }}';">
-            <i class="fas fa-user"></i>
-            <h6 class="label-menu d-none">Atur Pengguna</h6>
-        </div>
+        @if (session()->get('user')->role == 1)
+            <div class="my-2 {{ $menu_active === 'user' ? 'menu-active' : '' }} my-2 px-3"
+                onclick="window.location.href='{{ route('user.index', ['token' => $token]) }}';">
+                <i class="fas fa-user"></i>
+                <h6 class="label-menu d-none">Atur Pengguna</h6>
+            </div>
         @endif
-        <div class="my-2 {{ ($menu_active ==="informasi") ? 'menu-active' : '' }} my-2 px-3" onclick="window.location.href='{{ route('artikel.index', ['token' => $token]) }}';">
+        <div class="my-2 {{ $menu_active === 'informasi' ? 'menu-active' : '' }} my-2 px-3"
+            onclick="window.location.href='{{ route('artikel.index', ['token' => $token]) }}';">
             <i class="fas fa-book-open"></i>
             <h6 class="label-menu d-none">Informasi</h6>
         </div>
-        @if(session()->get('user')->role == 1)
-        <div class="my-2 {{ ($menu_active ==="gallery") ? 'menu-active' : '' }} my-2 px-3" onclick="window.location.href='{{ route('gallery.index', ['token' => $token]) }}';">
-            <i class="fas fa-images"></i>
-            <h6 class="label-menu d-none">Galeri</h6>
-        </div>
-        <div class="my-2 {{ ($menu_active ==="academic") ? 'menu-active' : '' }} my-2 px-3" onclick="window.location.href='{{ route('jurusan.index', ['token' => $token]) }}';">
-            <i class="fas fa-pen"></i>
-            <h6 class="label-menu d-none">Akademik</h6>
-        </div>
-        <div class="my-2 {{ ($menu_active ==="kemitraan") ? 'menu-active' : '' }} my-2 px-3" onclick="window.location.href='{{ route('kemitraan.index', ['token' => $token]) }}';">
-            <i class="fas fa-handshake"></i>
-            <h6 class="label-menu d-none">Kemitraan</h6>
-        </div>
-        <div class="my-2 {{ ($menu_active ==="profile") ? 'menu-active' : '' }} my-2 px-3" onclick="window.location.href='{{ route('fasilitas.index', ['token' => $token]) }}';">
-            <i class="fas fa-school"></i>
-            <h6 class="label-menu d-none">Profil Sekolah</h6>
-        </div>
-        <div class="my-2 {{ ($menu_active ==="links") ? 'menu-active' : '' }} my-2 px-3" onclick="window.location.href='{{ route('alert.index', ['token' => $token]) }}';">
-            <i class="fas fa-link"></i>
-            <h6 class="label-menu d-none">Links</h6>
-        </div>
+        @if (session()->get('user')->role == 1)
+            <div class="my-2 {{ $menu_active === 'gallery' ? 'menu-active' : '' }} my-2 px-3"
+                onclick="window.location.href='{{ route('gallery.index', ['token' => $token]) }}';">
+                <i class="fas fa-images"></i>
+                <h6 class="label-menu d-none">Galeri</h6>
+            </div>
+            <div class="my-2 {{ $menu_active === 'academic' ? 'menu-active' : '' }} my-2 px-3"
+                onclick="window.location.href='{{ route('jurusan.index', ['token' => $token]) }}';">
+                <i class="fas fa-pen"></i>
+                <h6 class="label-menu d-none">Akademik</h6>
+            </div>
+            <div class="my-2 {{ $menu_active === 'kemitraan' ? 'menu-active' : '' }} my-2 px-3"
+                onclick="window.location.href='{{ route('kemitraan.index', ['token' => $token]) }}';">
+                <i class="fas fa-handshake"></i>
+                <h6 class="label-menu d-none">Kemitraan</h6>
+            </div>
+            <div class="my-2 {{ $menu_active === 'profile' ? 'menu-active' : '' }} my-2 px-3"
+                onclick="window.location.href='{{ route('fasilitas.index', ['token' => $token]) }}';">
+                <i class="fas fa-school"></i>
+                <h6 class="label-menu d-none">Profil Sekolah</h6>
+            </div>
+            <div class="my-2 {{ $menu_active === 'links' ? 'menu-active' : '' }} my-2 px-3"
+                onclick="window.location.href='{{ route('alert.index', ['token' => $token]) }}';">
+                <i class="fas fa-link"></i>
+                <h6 class="label-menu d-none">Links</h6>
+            </div>
         @endif
 
     </div>
     <div class="w-80 bg-white exit-menu ml-4" style="left: 0;">
-        <form method="POST" action="{{ route('logout',$token) }}">
+        <form method="POST" action="{{ route('logout', $token) }}">
             @csrf <!-- CSRF protection for Laravel -->
             <input type="hidden" name="token" value="{{ $token }}">
             <button type="submit" class="a-dark-default bg-white" style="border: none; background: none;">
@@ -84,7 +93,7 @@
 <script>
     $(document).ready(function() {
         var ww = $(window).width();
-        if(ww >= 767) {
+        if (ww >= 767) {
             $('.aside-admin').mouseover(function() {
                 $('.label-menu').removeClass('d-none').addClass('d-inline-block')
                 $('.menu-aside').removeClass('text-center').addClass('text-left')
@@ -100,7 +109,7 @@
         } else {
             $('#toggler').click(function() {
                 $('#aside-admin').toggleClass('aside-admin-show');
-                if($('#aside-admin').hasClass('aside-admin-show')) {
+                if ($('#aside-admin').hasClass('aside-admin-show')) {
                     $('.overlay-black-admin').removeClass('d-none')
                     $('#icon-toggler').removeClass('fa-bars').addClass('fa-times')
                     $('.aside-admin').mouseover(function() {
