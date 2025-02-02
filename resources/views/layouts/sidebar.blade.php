@@ -4,7 +4,7 @@
             <img src="{{ asset('img/fav.png') }}" class="img-logo-aside d-inline-block mb-2" width="40px" height="40px"
                 alt="">
             <div class="label-menu d-none">
-                <h6 class="mb-0">SMKN1PANGKER</h6>
+                <h6 class="mb-0">SMK BISA</h6>
                 <p class="mb-0" style="font-size: .85rem !important;">Admin Panel</p>
             </div>
         </div>
@@ -83,7 +83,7 @@
 <div class="container mt-3" id="label-small">
     <div class="row">
         <div class="col-md-8 offset-md-2 text-center">
-            <h4 class="poppins mb-0">SMKNUSA</h4>
+            <h4 class="poppins mb-0">SMKN1PANGKER</h4>
             <p class="montserrat">Admin Panel</p>
         </div>
     </div>

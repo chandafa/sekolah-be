@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +14,7 @@
     <link rel="stylesheet" href="{{ asset('css/jssocials-theme-classic.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jssocials-theme-flat.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jssocials-theme-minima.css') }}">
-    <link rel="icon" type="image/x-icon" class="rounded-circle" href="{{ asset('smkicon.ico') }}" />
+    <link rel="icon" type="image/x-icon" class="rounded-circle" href="{{ asset('smkicon.png') }}" />
     {{-- <link href="https://cdn.datatables.net/v/bs4/jszip-3.10.1/dt-2.1.8/af-2.7.0/b-3.1.2/b-colvis-3.1.2/b-html5-3.1.2/b-print-3.1.2/fc-5.0.3/fh-4.0.1/r-3.0.3/datatables.min.css" rel="stylesheet"> --}}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
@@ -25,6 +26,7 @@
 
     @yield('title')
 </head>
+
 <body class="bg-light">
 
     @include('layouts.sidebar')
@@ -34,8 +36,10 @@
         @yield('container')
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-{{--    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>--}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+    {{--    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script> --}}
     <script src="{{ asset('js/all.min.js') }}"></script>
     <script src="{{ asset('js/sharer.min.js') }}"></script>
     <script src="{{ asset('js/fontawesome.min.js') }}"></script>
@@ -48,4 +52,5 @@
     <script src="{{ asset('js/script.js') }}"></script>
     @yield('script')
 </body>
+
 </html>

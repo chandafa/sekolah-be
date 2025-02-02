@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\File;
  *     @OA\Property(property="gallery_title", type="string", example="Kegiatan MPLS"),
  *     @OA\Property(property="icon_type", type="string", example="Gallery"),
  *     @OA\Property(property="gallery_text", type="string", example="MPLS dilaksanakan pada tanggal..."),
- *     @OA\Property(property="gallery_location", type="string", example="SMKN 1 Purwosari"),
+ *     @OA\Property(property="gallery_location", type="string", example="SMKN 1 PANGKER"),
  *     @OA\Property(property="id_category", type="string", example="MPLS/Kelas/dll"),
  *     @OA\Property(property="gallery_file", type="string", example="img/gallery/image.png"),
  *     @OA\Property(property="file_type", type="string", example="jpg/png/dll"),

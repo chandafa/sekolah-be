@@ -70,7 +70,7 @@
                     <div class="row p-4">
                         <div class="col-md-8">
                             <h4 class="poppins mb-0">Kategori</h4>
-                            <p class="montserrat" style="font-size: .85rem;">Daftar Kategori Galeri SMKN 1 Purwosari
+                            <p class="montserrat" style="font-size: .85rem;">Daftar Kategori Galeri SMKN 1 Pangkalan Kerinci
                             </p>
                         </div>
                         <div class="col-md-4 text-right">
@@ -110,8 +110,7 @@
                                                         onclick="event.stopPropagation(); return confirm('Data akan dihapus ?')">
                                                         @csrf
                                                         @method('delete')
-                                                        <input type="hidden"
-                                                            value="{{ $data->id_ategory }}"
+                                                        <input type="hidden" value="{{ $data->id_ategory }}"
                                                             name="idName">
                                                         <button type="submit" class="dropdown-item text-danger"
                                                             style="padding-bottom: 10px; padding-top: 10px; text-align: center; font-weight: 600;">
@@ -148,16 +147,22 @@
                     <div class="row px-3">
                         <div class="col-md-6">
                             <div class="pb-3">
-                                @if($count>10)
-                                    <form method="GET" id="show-form" name="showForm" action="{{ url()->current() }}">
+                                @if ($count > 10)
+                                    <form method="GET" id="show-form" name="showForm"
+                                        action="{{ url()->current() }}">
                                         <div class="form-group d-inline-block">
                                             <input type="hidden" name="page" value="{{ request('page', 1) }}">
-                                            <select id="show-select" name="show" onchange="this.form.submit()" class="form-control form-control-sm d-inline-block"
-                                                    style="width:70px; font-size: .7rem;">
-                                                <option value="10" {{ request('show') == 10 ? 'selected' : '' }}>10</option>
-                                                <option value="20" {{ request('show') == 20 ? 'selected' : '' }}>20</option>
-                                                <option value="30" {{ request('show') == 30 ? 'selected' : '' }}>30</option>
-                                                <option value="40" {{ request('show') == 40 ? 'selected' : '' }}>40</option>
+                                            <select id="show-select" name="show" onchange="this.form.submit()"
+                                                class="form-control form-control-sm d-inline-block"
+                                                style="width:70px; font-size: .7rem;">
+                                                <option value="10" {{ request('show') == 10 ? 'selected' : '' }}>10
+                                                </option>
+                                                <option value="20" {{ request('show') == 20 ? 'selected' : '' }}>20
+                                                </option>
+                                                <option value="30" {{ request('show') == 30 ? 'selected' : '' }}>30
+                                                </option>
+                                                <option value="40" {{ request('show') == 40 ? 'selected' : '' }}>40
+                                                </option>
                                             </select>
                                         </div>
                                         <p class="montserrat d-inline" style="font-size: .7rem;">Data per halaman</p>
@@ -165,13 +170,16 @@
                                 @endif
                             </div>
                         </div>
-                        @if($count > request('show') && $count > 10)
+                        @if ($count > request('show') && $count > 10)
                             <div class="col-md-6 text-right">
-                                <p class="montserrat d-inline" style="font-size: .7rem;">{{ $gallerys->firstItem() }} dari {{ $gallerys->lastItem() }}</p>
-                                <a href="{{ $gallerys->appends(['show' => request('show')])->previousPageUrl() }}" class="btn btn-sm p-0 px-2 btn-white {{ $gallerys->onFirstPage() ? 'disabled' : 'active' }}">
+                                <p class="montserrat d-inline" style="font-size: .7rem;">{{ $gallerys->firstItem() }}
+                                    dari {{ $gallerys->lastItem() }}</p>
+                                <a href="{{ $gallerys->appends(['show' => request('show')])->previousPageUrl() }}"
+                                    class="btn btn-sm p-0 px-2 btn-white {{ $gallerys->onFirstPage() ? 'disabled' : 'active' }}">
                                     <i class="fas fa-caret-left text-warning"></i>
                                 </a>
-                                <a href="{{ $gallerys->appends(['show' => request('show')])->nextPageUrl() }}" class="btn btn-sm p-0 px-2 btn-white {{ $gallerys->hasMorePages() ? 'active' : 'disabled' }}">
+                                <a href="{{ $gallerys->appends(['show' => request('show')])->nextPageUrl() }}"
+                                    class="btn btn-sm p-0 px-2 btn-white {{ $gallerys->hasMorePages() ? 'active' : 'disabled' }}">
                                     <i class="fas fa-caret-right text-warning"></i>
                                 </a>
                             </div>

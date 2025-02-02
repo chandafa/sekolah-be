@@ -12,7 +12,8 @@
                 <div class="row p-4">
                     <div class="col-md-8">
                         <h4 class="poppins mb-0">Berita</h4>
-                        <p class="montserrat" style="font-size: .85rem;">Daftar Berita SMKN 1 Purwosari ({{ $countNews }})
+                        <p class="montserrat" style="font-size: .85rem;">Daftar Berita SMKN 1 Pangkalan Kerinci
+                            ({{ $countNews }})
                         </p>
                     </div>
                     <div class="col-md-4 text-right">
@@ -107,7 +108,7 @@
                 </table>
                 <script>
                     $('.check-toggle').change(function() {
-                        if(this.checked) {
+                        if (this.checked) {
                             $('.btn-print').removeAttr('disabled').removeClass('disabled')
                             $('.check-respond').prop('checked', true);
                         } else {
@@ -117,7 +118,7 @@
                     });
                     $('input[name="checkPrint[]"]').change(function() {
                         var atLeastOneIsChecked = $('input[name="checkPrint[]"]:checked').length > 0;
-                        if(atLeastOneIsChecked) {
+                        if (atLeastOneIsChecked) {
                             $('.btn-print').removeAttr('disabled').removeClass('disabled')
                         } else {
                             $('.btn-print').addClass('disabled').attr('disabled')
@@ -127,16 +128,21 @@
                 <div class="row px-3">
                     <div class="col-md-6">
                         <div class="pb-3">
-                            @if($countNews)
+                            @if ($countNews)
                                 <form method="GET" id="show-form" name="showForm" action="{{ url()->current() }}">
                                     <div class="form-group d-inline-block">
                                         <input type="hidden" name="page" value="{{ request('page', 1) }}">
-                                        <select id="show-select" name="show" onchange="this.form.submit()" class="form-control form-control-sm d-inline-block"
-                                                style="width:70px; font-size: .7rem;">
-                                            <option value="10" {{ request('show') == 10 ? 'selected' : '' }}>10</option>
-                                            <option value="20" {{ request('show') == 20 ? 'selected' : '' }}>20</option>
-                                            <option value="30" {{ request('show') == 30 ? 'selected' : '' }}>30</option>
-                                            <option value="40" {{ request('show') == 40 ? 'selected' : '' }}>40</option>
+                                        <select id="show-select" name="show" onchange="this.form.submit()"
+                                            class="form-control form-control-sm d-inline-block"
+                                            style="width:70px; font-size: .7rem;">
+                                            <option value="10" {{ request('show') == 10 ? 'selected' : '' }}>10
+                                            </option>
+                                            <option value="20" {{ request('show') == 20 ? 'selected' : '' }}>20
+                                            </option>
+                                            <option value="30" {{ request('show') == 30 ? 'selected' : '' }}>30
+                                            </option>
+                                            <option value="40" {{ request('show') == 40 ? 'selected' : '' }}>40
+                                            </option>
                                         </select>
                                     </div>
                                     <p class="montserrat d-inline" style="font-size: .7rem;">Data per halaman</p>
@@ -144,13 +150,16 @@
                             @endif
                         </div>
                     </div>
-                    @if($countNews > request('show') && $countNews > 10)
+                    @if ($countNews > request('show') && $countNews > 10)
                         <div class="col-md-6 text-right">
-                            <p class="montserrat d-inline" style="font-size: .7rem;">{{ $news->firstItem() }} dari {{ $news->lastItem() }}</p>
-                            <a href="{{ $news->appends(['show' => request('show')])->previousPageUrl() }}" class="btn btn-sm p-0 px-2 btn-white {{ $news->onFirstPage() ? 'disabled' : 'active' }}">
+                            <p class="montserrat d-inline" style="font-size: .7rem;">{{ $news->firstItem() }} dari
+                                {{ $news->lastItem() }}</p>
+                            <a href="{{ $news->appends(['show' => request('show')])->previousPageUrl() }}"
+                                class="btn btn-sm p-0 px-2 btn-white {{ $news->onFirstPage() ? 'disabled' : 'active' }}">
                                 <i class="fas fa-caret-left text-warning"></i>
                             </a>
-                            <a href="{{ $news->appends(['show' => request('show')])->nextPageUrl() }}" class="btn btn-sm p-0 px-2 btn-white {{ $news->hasMorePages() ? 'active' : 'disabled' }}">
+                            <a href="{{ $news->appends(['show' => request('show')])->nextPageUrl() }}"
+                                class="btn btn-sm p-0 px-2 btn-white {{ $news->hasMorePages() ? 'active' : 'disabled' }}">
                                 <i class="fas fa-caret-right text-warning"></i>
                             </a>
                         </div>

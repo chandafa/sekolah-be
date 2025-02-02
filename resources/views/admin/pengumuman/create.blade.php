@@ -41,9 +41,11 @@
                     name="id_pemberitahuan_category">
                     @foreach ($pengumuman as $p)
                         @if (old('id_pemberitahuan_category') == $p->id_pemberitahuan_category)
-                            <option value="{{ $p->id_pemberitahuan_category }}" selected>{{ $p->pemberitahuan_category_name }}</option>
+                            <option value="{{ $p->id_pemberitahuan_category }}" selected>
+                                {{ $p->pemberitahuan_category_name }}</option>
                         @else
-                            <option value="{{ $p->id_pemberitahuan_category }}">{{ $p->pemberitahuan_category_name }}</option>
+                            <option value="{{ $p->id_pemberitahuan_category }}">{{ $p->pemberitahuan_category_name }}
+                            </option>
                         @endif
                     @endforeach
                 </select>
@@ -57,10 +59,8 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="date">Tanggal</label>
-                        <input type="date" name="date" id="date"
-                            value="{{ old('date') }}"
-                            class="form-control @error('date') is-invalid @enderror"
-                            aria-describedby="tanggalId">
+                        <input type="date" name="date" id="date" value="{{ old('date') }}"
+                            class="form-control @error('date') is-invalid @enderror" aria-describedby="tanggalId">
                         @error('date')
                             <p class="text-danger">
                                 {{ $message }}
@@ -72,8 +72,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="time">Waktu</label>
-                        <input type="time" name="time" id="time"
-                            value="{{ old('time') }}"
+                        <input type="time" name="time" id="time" value="{{ old('time') }}"
                             class="form-control @error('time') is-invalid @enderror" aria-describedby="waktuId">
                         @error('time')
                             <p class="text-danger">
@@ -104,7 +103,7 @@
                     <div class="form-group">
                         <label for="thumbnail">Thumbnail Pengumuman</label>
                         <input onchange="loadFile(event)" type="file" name="thumbnail" id="thumbnail"
-                            class="form-control @error('thumbnail') is-invalid @enderror" placeholder="Purwosari, Pasuruan"
+                            class="form-control @error('thumbnail') is-invalid @enderror" placeholder="Pangker, Pelalawan"
                             aria-describedby="imageId">
                         <small id="imageId" class="text-muted d-none"></small>
                         @error('thumbnail')
@@ -121,13 +120,13 @@
             <div class="form-group">
                 <label for="pdf_file">PDF Informasi Pengumuman</label>
                 <input type="file" name="pdf_file" id="pdf_file"
-                       class="form-control @error('pdf_file') is-invalid @enderror" placeholder="PDF Data"
-                aria-describedby="pdfdata">
+                    class="form-control @error('pdf_file') is-invalid @enderror" placeholder="PDF Data"
+                    aria-describedby="pdfdata">
                 <small id="pdfdata" class="text-muted d-none">pdf untuk mendukung informasi atau file foto</small>
                 @error('pdf_file')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
                 @enderror
             </div>
             <div class="text-right mb-4">

@@ -20,26 +20,23 @@
                 <div class="col-md-4 offset-md-1 mt-4 p-2">
                     <div class="w-100 rad bg-white position-relative shadow py-3 px-4">
                         <h5 class="poppins mb-0">Update Program Studi</h5>
-                        <form
-                            action="{{ route('prodi.update', ['token' => $token, 'prodi' => $category->id_prodi]) }}"
+                        <form action="{{ route('prodi.update', ['token' => $token, 'prodi' => $category->id_prodi]) }}"
                             method="post">
                             @method('PUT')
                             @csrf
                             <div class="form-group">
-                                <input type="hidden" value="{{ $category->id_prodi }}" name="idCategory"
-                                    id="idCategory" class="form-control" placeholder="Nama Program Studi">
+                                <input type="hidden" value="{{ $category->id_prodi }}" name="idCategory" id="idCategory"
+                                    class="form-control" placeholder="Nama Program Studi">
                             </div>
                             <div class="form-group">
                                 <label for="prodi_name" class="mt-3 mb-2">Nama Prodi</label>
-                                <input type="text" required value="{{ $category->prodi_name }}"
-                                    name="prodi_name" id="prodi_name" class="form-control"
-                                    placeholder="Nama Program Studi">
+                                <input type="text" required value="{{ $category->prodi_name }}" name="prodi_name"
+                                    id="prodi_name" class="form-control" placeholder="Nama Program Studi">
                             </div>
                             <div class="form-group">
                                 <label for="prodi_short" class="mt-3 mb-2">Singkatan Prodi</label>
-                                <input type="text" required value="{{ $category->prodi_short }}"
-                                    name="prodi_short" id="prodi_short" class="form-control"
-                                    placeholder="TI / Pemesinan, dll">
+                                <input type="text" required value="{{ $category->prodi_short }}" name="prodi_short"
+                                    id="prodi_short" class="form-control" placeholder="TI / Pemesinan, dll">
                             </div>
                             <div class="form-group">
                                 <label for="manual_color" class="mt-3 mb-2">Warna Prodi</label>
@@ -100,11 +97,12 @@
                     <div class="row p-4">
                         <div class="col-md-8">
                             <h4 class="poppins mb-0">Program Studi</h4>
-                            <p class="montserrat" style="font-size: .85rem;">Daftar Program Studi SMKN 1 Purwosari</p>
+                            <p class="montserrat" style="font-size: .85rem;">Daftar Program Studi SMKN 1 Pangkalan Kerinci
+                            </p>
                         </div>
                         <div class="col-md-4 text-right">
                             <a href="{{ url()->previous() }}"
-                               class="btn-print btn btn-white border-warning px-3 rounded-pill">
+                                class="btn-print btn btn-white border-warning px-3 rounded-pill">
                                 <i class="fas fa-newspaper"></i> Kembali
                             </a>
                         </div>
@@ -181,16 +179,22 @@
                     <div class="row px-3">
                         <div class="col-md-6">
                             <div class="pb-3">
-                                @if($count > 10)
-                                    <form method="GET" id="show-form" name="showForm" action="{{ url()->current() }}">
+                                @if ($count > 10)
+                                    <form method="GET" id="show-form" name="showForm"
+                                        action="{{ url()->current() }}">
                                         <div class="form-group d-inline-block">
                                             <input type="hidden" name="page" value="{{ request('page', 1) }}">
-                                            <select id="show-select" name="show" onchange="this.form.submit()" class="form-control form-control-sm d-inline-block"
-                                                    style="width:70px; font-size: .7rem;">
-                                                <option value="10" {{ request('show') == 10 ? 'selected' : '' }}>10</option>
-                                                <option value="20" {{ request('show') == 20 ? 'selected' : '' }}>20</option>
-                                                <option value="30" {{ request('show') == 30 ? 'selected' : '' }}>30</option>
-                                                <option value="40" {{ request('show') == 40 ? 'selected' : '' }}>40</option>
+                                            <select id="show-select" name="show" onchange="this.form.submit()"
+                                                class="form-control form-control-sm d-inline-block"
+                                                style="width:70px; font-size: .7rem;">
+                                                <option value="10" {{ request('show') == 10 ? 'selected' : '' }}>10
+                                                </option>
+                                                <option value="20" {{ request('show') == 20 ? 'selected' : '' }}>20
+                                                </option>
+                                                <option value="30" {{ request('show') == 30 ? 'selected' : '' }}>30
+                                                </option>
+                                                <option value="40" {{ request('show') == 40 ? 'selected' : '' }}>40
+                                                </option>
                                             </select>
                                         </div>
                                         <p class="montserrat d-inline" style="font-size: .7rem;">Data per halaman</p>
@@ -198,13 +202,16 @@
                                 @endif
                             </div>
                         </div>
-                        @if($count > request('show') && $count > 10)
+                        @if ($count > request('show') && $count > 10)
                             <div class="col-md-6 text-right">
-                                <p class="montserrat d-inline" style="font-size: .7rem;">{{ $prodi->firstItem() }} dari {{ $prodi->lastItem() }}</p>
-                                <a href="{{ $prodi->appends(['show' => request('show')])->previousPageUrl() }}" class="btn btn-sm p-0 px-2 btn-white {{ $prodi->onFirstPage() ? 'disabled' : 'active' }}">
+                                <p class="montserrat d-inline" style="font-size: .7rem;">{{ $prodi->firstItem() }} dari
+                                    {{ $prodi->lastItem() }}</p>
+                                <a href="{{ $prodi->appends(['show' => request('show')])->previousPageUrl() }}"
+                                    class="btn btn-sm p-0 px-2 btn-white {{ $prodi->onFirstPage() ? 'disabled' : 'active' }}">
                                     <i class="fas fa-caret-left text-warning"></i>
                                 </a>
-                                <a href="{{ $prodi->appends(['show' => request('show')])->nextPageUrl() }}" class="btn btn-sm p-0 px-2 btn-white {{ $prodi->hasMorePages() ? 'active' : 'disabled' }}">
+                                <a href="{{ $prodi->appends(['show' => request('show')])->nextPageUrl() }}"
+                                    class="btn btn-sm p-0 px-2 btn-white {{ $prodi->hasMorePages() ? 'active' : 'disabled' }}">
                                     <i class="fas fa-caret-right text-warning"></i>
                                 </a>
                             </div>

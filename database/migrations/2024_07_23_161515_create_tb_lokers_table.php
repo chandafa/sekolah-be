@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('loker_description')->nullable();
             $table->string('loker_thumbnail')->nullable();
             $table->string('loker_available');
+            $table->string('loker_for');
             $table->timestamps();
         });
     }

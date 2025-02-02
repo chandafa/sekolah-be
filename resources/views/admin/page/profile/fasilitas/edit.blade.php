@@ -62,7 +62,7 @@
                         <label for="facility_image">Thumbnail Fasilitas</label>
                         <input onchange="loadFile(event)" type="file" name="facility_image" id="image"
                             class="form-control @error('facility_image') is-invalid @enderror"
-                            placeholder="Purwosari, Pasuruan" aria-describedby="imageId">
+                            placeholder="Pangker, Pelalawan" aria-describedby="imageId">
                         <small id="imageId" class="text-muted d-none"></small>
                         @error('facility_image')
                             <div class="invalid-feedback">
@@ -72,8 +72,8 @@
                     </div>
                 </div>
                 <div class="col-md-6 text-center">
-                    <img class="w-100 rounded" id="preview" src="{{ asset('img/fasilitas/'.$fasilitas->facility_image) }}"  
-                        alt="">
+                    <img class="w-100 rounded" id="preview"
+                        src="{{ asset('img/fasilitas/' . $fasilitas->facility_image) }}" alt="">
                 </div>
             </div>
             <div class="text-right mb-4">

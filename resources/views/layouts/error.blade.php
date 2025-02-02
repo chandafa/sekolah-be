@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,9 +13,10 @@
     <link rel="stylesheet" href="{{ asset('css/jssocials-theme-classic.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jssocials-theme-flat.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jssocials-theme-minima.css') }}">
-    <link rel="icon" type="image/x-icon" class="rounded-circle" href="{{ asset('smkicon.ico') }}" />
+    <link rel="icon" type="image/x-icon" class="rounded-circle" href="{{ asset('smkicon.png') }}" />
     <title>Not found</title>
 </head>
+
 <body>
     <div class="row my-5">
         <div class="col-md-6 offset-md-3 text-center pt-5 mt-5">
@@ -33,4 +35,5 @@
     <script src="{{ asset('js/typeit.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
 </body>
+
 </html>

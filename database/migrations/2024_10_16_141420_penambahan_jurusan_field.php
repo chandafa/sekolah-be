@@ -12,11 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tb_jurusan', function (Blueprint $table) {
-            $table->string('jurusan_thumbnail')->nullable(); // Thumbnail (opsional)
-        });
+            $table->id('id_jurusan'); // Primary key
+            $table->string('jurusan_nama'); // Nama jurusan
+            $table->string('jurusan_short'); // Singkatan jurusan
+            $table->unsignedBigInteger('id_prodi'); // Relasi ke tb_prodi
+            $table->text('jurusan_text')->nullable(); // Deskripsi jurusan
+            $table->string('jurusan_thumbnail')->nullable(); // Thumbnail
+            $table->string('jurusan_logo')->nullable(); // Logo
 
-        Schema::table('tb_jurusan', function (Blueprint $table) {
-            $table->string('jurusan_logo')->after('jurusan_thumbnail');
+            // Foreign key ke tb_prodi
+            $table->foreign('id_prodi')->references('id_prodi')->on('tb_prodi')->onDelete('cascade');
         });
     }
 
