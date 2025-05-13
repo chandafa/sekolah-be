@@ -17,32 +17,21 @@ class adminUser extends Seeder
         DB::table('tb_user_roles')->insert([
             [
                 'name' => 'admin',
-                'user_access' => data_manager::array2base(data_manager::accessRole()), // Example JSON array of user access
+                // 'user_access' => data_manager::array2base(data_manager::accessRole()), // Example JSON array of user access
+                'user_access' => json_encode(data_manager::accessRole()),
+
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
         ]);
         DB::table('tb_admins')->insert([
-            [
-                'image' => 'default.jpg',
-                'name' => 'Budi',
-                'username' => 'tunbudi06',
-                'email' => 'budi@tun06.tech',
-                'token' => "budi",
-                'role' => 1, // Assuming role ID 1 is for the admin role
-                'created_by' => 'Admin',
-                'password' => Hash::make('admin123'), // Hash the password
-                'remember_token' => null,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
 
             [
-                'image' => 'default.jpg',
+                'image' => 'smkicon.png',
                 'name' => 'User',
                 'username' => 'usersmk',
                 'email' => 'smkuser@gmail.com',
-                'token' => 'dava',
+                'token' => 'adminck',
                 'role' => 1, // Assuming role ID 1 is for the admin role
                 'created_by' => 'Admin',
                 'password' => Hash::make('user123'), // Hash the password

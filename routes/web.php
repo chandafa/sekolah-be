@@ -1,41 +1,43 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ArtikelController;
-use App\Http\Controllers\Auth\AdminAuth;
-use App\Http\Controllers\BeritaController;
-use App\Http\Controllers\categories\ArtikelCategory;
-use App\Http\Controllers\categories\BeritaCategory;
-use App\Http\Controllers\categories\EventCategory;
-use App\Http\Controllers\categories\GalleryCategory;
-use App\Http\Controllers\categories\PengumumanCategory;
-use App\Http\Controllers\EventController;
-use App\Http\Controllers\GalleryController;
-use App\Http\Controllers\link\footerController;
-use App\Http\Controllers\logUserAproved;
-use App\Http\Controllers\mitra\KemitraanController;
-use App\Http\Controllers\mitra\LokerController;
-use App\Http\Controllers\mitra\PosisiController;
-use App\Http\Controllers\PengumumanController;
-use App\Http\Controllers\perangkatAjarController;
-use App\Http\Controllers\profile\ExtraController;
-use App\Http\Controllers\profile\FasilitasController;
-use App\Http\Controllers\profile\JurusanController;
-use App\Http\Controllers\profile\PdController;
-use App\Http\Controllers\profile\ProdiController;
-use App\Http\Controllers\profile\ProfileController;
-use App\Http\Controllers\profile\PTKController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\profileAdmin;
 use App\Http\Controllers\SkController;
+use App\Http\Middleware\hasAdminToken;
+use App\Http\Controllers\Auth\AdminAuth;
+use App\Http\Controllers\logUserAproved;
+use App\Http\Middleware\auth\adminLogin;
+use App\Http\Middleware\preventCallBack;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\url\AlertController;
 use App\Http\Controllers\url\otherController;
 use App\Http\Controllers\url\VideoController;
 use App\Http\Controllers\user\UserController;
-use App\Http\Middleware\auth\adminLogin;
-use App\Http\Middleware\hasAdminToken;
+use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\profile\PdController;
+use App\Http\Controllers\url\NavbarController;
+use App\Http\Controllers\link\footerController;
+use App\Http\Controllers\mitra\LokerController;
+use App\Http\Controllers\profile\PTKController;
+use App\Http\Controllers\mitra\PosisiController;
+use App\Http\Controllers\perangkatAjarController;
+use App\Http\Controllers\profile\ExtraController;
+use App\Http\Controllers\profile\ProdiController;
+use App\Http\Controllers\categories\EventCategory;
+use App\Http\Controllers\profile\BasicInformation;
+use App\Http\Controllers\categories\BeritaCategory;
+use App\Http\Controllers\mitra\KemitraanController;
+use App\Http\Controllers\profile\JurusanController;
+use App\Http\Controllers\profile\ProfileController;
 use App\Http\Middleware\preventAccessForAdminUsers;
-use App\Http\Middleware\preventCallBack;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\categories\ArtikelCategory;
+use App\Http\Controllers\categories\GalleryCategory;
+use App\Http\Controllers\profile\FasilitasController;
+use App\Http\Controllers\categories\PengumumanCategory;
 
 Route::get('/', function () {
     return redirect('/private/admin/login/GUI-APP');
@@ -160,6 +162,7 @@ Route::prefix('private/admin')->group(function () {
 
                 Route::resource('/posisi', PosisiController::class);
                 Route::get('/links', [AdminController::class, 'links'])->name('links');
+                Route::post('/profile/pd/import', [PdController::class, 'import'])->name('pd.import');
                 Route::prefix('profile')->group(function () {
                     Route::resource('/jurusan', JurusanController::class);
                     Route::resource('pd', PdController::class)->parameters([
@@ -179,6 +182,13 @@ Route::prefix('private/admin')->group(function () {
                         'update' => 'prodi.update',
                         'destroy' => 'prodi.destroy',
                     ])->except(['show']);
+
+                    Route::prefix('Basic')->group(function () {
+                        Route::get('/', [BasicInformation::class, 'index'])->name('basic.index');
+                        Route::get('/show/{id}', [BasicInformation::class, 'show'])->name('basic.show');
+                        Route::get('/edit/{id}', [BasicInformation::class, 'edit'])->name('basic.edit');
+                        Route::patch('/update/{id}', [BasicInformation::class, 'update'])->name('basic.update');
+                    });
 
                     Route::prefix('lainnya')->group(function () {
                         Route::get('index', [otherController::class, 'index'])->name('lainnya.index');
@@ -200,6 +210,7 @@ Route::prefix('private/admin')->group(function () {
 
                     Route::prefix('link')->group(function () {
                         Route::resource('/alert', AlertController::class);
+                        Route::resource('/navbar', NavbarController::class);
 
                         Route::prefix('footer')->group(function () {
                             Route::get('index', [footerController::class, 'index'])->name('footer');

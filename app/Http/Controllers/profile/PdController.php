@@ -2,12 +2,35 @@
 
 namespace App\Http\Controllers\profile;
 
-use App\Http\Controllers\Controller;
-use App\Models\tb_peserta_didik;
 use Illuminate\Http\Request;
+use App\Models\tb_peserta_didik;
+use App\Imports\PesertaDidikImport;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class PdController extends Controller
 {
+    /**
+     * Import daftar peserta didik.
+     */
+    public function import(Request $request)
+    {
+        // Debug: Pastikan request sampai ke method ini
+        Log::info('Import method called');
+        dd($request->all()); // Hapus setelah debugging
+
+        $request->validate([
+            'csv' => 'required|mimes:xlsx,xls,csv',
+        ]);
+
+        Excel::import(new PesertaDidikImport, $request->file('csv'));
+
+        return redirect()->route('pd.index', ['token' => $request->token])->with('success', 'Data peserta didik berhasil diimpor.');
+    }
+
+
     /**
      * Menampilkan daftar peserta didik.
      */

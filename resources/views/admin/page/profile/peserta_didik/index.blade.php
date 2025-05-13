@@ -29,7 +29,9 @@
                         <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
                             aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
-                                <form action="" method="POST">
+                                <form action="{{ route('pd.import', ['token' => $token]) }}" method="POST"
+                                    enctype="multipart/form-data">
+                                    @csrf
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title">Import CSV</h5>
@@ -47,7 +49,7 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <!-- <button type="submit" class="btn btn-warning rad">Save</button> -->
+                                            <button type="submit" class="btn btn-warning rad">Import</button>
                                         </div>
                                     </div>
                                 </form>
@@ -81,7 +83,7 @@
                         @foreach ($pd as $key => $data)
                             <tr>
                                 <!-- <td>{{ $data->nisn }}</td>
-                        <td>{{ $data->nis }}</td> -->
+                                    <td>{{ $data->nis }}</td> -->
                                 <td>{{ $data->nama }}</td>
                                 <td>{{ $data->kelas }}</td>
                                 <td>{{ $data->tempat_lahir }}</td>
@@ -131,6 +133,9 @@
 
 
                 </table>
+                <!-- Di sebelum penutup body -->
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
                 <script>
                     $('.check-toggle').change(function() {
                         if (this.checked) {

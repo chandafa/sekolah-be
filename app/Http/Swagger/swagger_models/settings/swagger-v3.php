@@ -8,7 +8,7 @@
  *     termsOfService="http://swagger.io/terms/",
  *
  *     @OA\Contact(
- *         email="aremadava3@gmail.com"
+ *         email="ck271138@gmail.com"
  *     ),
  *
  *     @OA\License(

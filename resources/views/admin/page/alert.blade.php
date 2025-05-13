@@ -54,6 +54,11 @@
                         <p class="montserrat" style="font-size: .85rem;">Daftar Alert untuk Tombol
                         </p>
                     </div>
+                    <div class="col-md-4 text-right">
+                        <a href="{{ route('alert.create', ['token' => $token]) }}"
+                            class="btn-print btn btn-warning shadow-warning px-5 rounded-pill"><i class="fas fa-plus"></i>
+                            Alert Baru</a>
+                    </div>
                 </div>
                 <table class="table">
                     <thead>
