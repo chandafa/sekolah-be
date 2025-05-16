@@ -58,7 +58,7 @@
                                         <label for="logo">Logo</label>
                                         <input onchange="loadFile(event)" type="file" name="logo" id="logo"
                                             class="form-control @error('thumbnail') is-invalid @enderror"
-                                            placeholder="Purwosari, Pasuruan" aria-describedby="imageId">
+                                            placeholder="Pangkalan Kerinci, Riau" aria-describedby="imageId">
                                         <small id="imageId" class="text-muted d-none"></small>
                                         @error('thumbnail')
                                             <p class="text-danger">

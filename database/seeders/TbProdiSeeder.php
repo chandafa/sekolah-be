@@ -13,25 +13,25 @@ class TbProdiSeeder extends Seeder
     public function run(): void
     {
         tb_prodi::create([
-            'prodi_name' => 'Teknologi dan Rekayasa',
+            'prodi_name' => 'Teknologi Informatika',
             'prodi_short' => 'TDR',
             'prodi_color' => '#007bff', // contoh warna biru Bootstrap
         ]);
 
         tb_prodi::create([
-            'prodi_name' => 'Bisnis dan Manajemen',
+            'prodi_name' => 'Teknologi dan Rekayasa',
             'prodi_short' => 'BDM',
             'prodi_color' => '#28a745',
         ]);
 
         tb_prodi::create([
-            'prodi_name' => 'Kesehatan dan Kecantikan',
+            'prodi_name' => 'Agribisnis dan Agroteknologi',
             'prodi_short' => 'KK',
             'prodi_color' => '#dc3545',
         ]);
 
         tb_prodi::create([
-            'prodi_name' => 'Seni dan Desain',
+            'prodi_name' => 'Teknologi Elektronika',
             'prodi_short' => 'SD',
             'prodi_color' => '#ffc107',
         ]);

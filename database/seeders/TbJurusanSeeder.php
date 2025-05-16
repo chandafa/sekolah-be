@@ -34,7 +34,7 @@ class TbJurusanSeeder extends Seeder
                 'jurusan_short' => 'MM',
                 'jurusan_thumbnail' => 'thumbnails/jurusan_mm.jpg',
                 'jurusan_text' => 'Jurusan yang berfokus pada desain grafis dan multimedia.',
-                'id_prodi' => 1,
+                'id_prodi' => 2,
                 'jurusan_logo' => 'logos/mm_logo.png',
             ],
             [
@@ -42,7 +42,7 @@ class TbJurusanSeeder extends Seeder
                 'jurusan_short' => 'TE',
                 'jurusan_thumbnail' => 'thumbnails/jurusan_te.jpg',
                 'jurusan_text' => 'Jurusan yang mempelajari sistem elektronika dan kontrol.',
-                'id_prodi' => 1,
+                'id_prodi' => 2,
                 'jurusan_logo' => 'logos/te_logo.png',
             ],
             [
@@ -50,7 +50,7 @@ class TbJurusanSeeder extends Seeder
                 'jurusan_short' => 'TKR',
                 'jurusan_thumbnail' => 'thumbnails/jurusan_tkr.jpg',
                 'jurusan_text' => 'Jurusan yang berfokus pada perawatan dan perbaikan kendaraan ringan.',
-                'id_prodi' => 1,
+                'id_prodi' => 3,
                 'jurusan_logo' => 'logos/tkr_logo.png',
             ],
             [
@@ -58,7 +58,7 @@ class TbJurusanSeeder extends Seeder
                 'jurusan_short' => 'TGB',
                 'jurusan_thumbnail' => 'thumbnails/jurusan_tgb.jpg',
                 'jurusan_text' => 'Jurusan yang mempelajari desain dan gambar bangunan.',
-                'id_prodi' => 1,
+                'id_prodi' => 3,
                 'jurusan_logo' => 'logos/tgb_logo.png',
             ],
             [
@@ -66,7 +66,7 @@ class TbJurusanSeeder extends Seeder
                 'jurusan_short' => 'TP',
                 'jurusan_thumbnail' => 'thumbnails/jurusan_tp.jpg',
                 'jurusan_text' => 'Jurusan yang berfokus pada proses pemesinan dan manufaktur.',
-                'id_prodi' => 1,
+                'id_prodi' => 4,
                 'jurusan_logo' => 'logos/tp_logo.png',
             ],
             [
@@ -74,24 +74,8 @@ class TbJurusanSeeder extends Seeder
                 'jurusan_short' => 'TAV',
                 'jurusan_thumbnail' => 'thumbnails/jurusan_tav.jpg',
                 'jurusan_text' => 'Jurusan yang mempelajari teknologi audio dan video.',
-                'id_prodi' => 1,
+                'id_prodi' => 4,
                 'jurusan_logo' => 'logos/tav_logo.png',
-            ],
-            [
-                'jurusan_nama' => 'Teknik Instalasi Tenaga Listrik',
-                'jurusan_short' => 'TITL',
-                'jurusan_thumbnail' => 'thumbnails/jurusan_titl.jpg',
-                'jurusan_text' => 'Jurusan yang berfokus pada instalasi dan pemeliharaan tenaga listrik.',
-                'id_prodi' => 1,
-                'jurusan_logo' => 'logos/titl_logo.png',
-            ],
-            [
-                'jurusan_nama' => 'Teknik Otomotif',
-                'jurusan_short' => 'TO',
-                'jurusan_thumbnail' => 'thumbnails/jurusan_to.jpg',
-                'jurusan_text' => 'Jurusan yang mempelajari teknologi otomotif dan perawatan kendaraan.',
-                'id_prodi' => 1,
-                'jurusan_logo' => 'logos/to_logo.png',
             ],
         ]);
     }
